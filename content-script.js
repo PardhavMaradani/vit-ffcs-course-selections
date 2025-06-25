@@ -110,13 +110,17 @@ function shouldDisableCheckbox(checkbox) {
     return false;
 }
 
-function updateCurrentPageCheckboxes() {
+function updateCurrentPageCheckboxes(courseSelected) {
     const checkboxes = document.querySelectorAll('table > tbody > tr > td > input.courseToggle');
     checkboxes.forEach(checkbox => {
         if (courseList[getCourseId(checkbox)]) {
             return;
         }
-        checkbox.disabled = shouldDisableCheckbox(checkbox);
+        if (courseSelected) {
+            checkbox.disabled = true;
+        } else {
+            checkbox.disabled = shouldDisableCheckbox(checkbox);
+        }
     });
 }
 
@@ -148,7 +152,7 @@ function courseToggle(checkbox) {
             delete courseList[course];
         });
     }
-    updateCurrentPageCheckboxes();
+    updateCurrentPageCheckboxes(checkbox.checked);
     console.log("selections", selections);
     console.log("courseList", courseList);
 }
@@ -170,6 +174,7 @@ function showSelections() {
         return;
     }
     const rows = document.querySelectorAll('table > tbody > tr');
+    let courseSelected = false;
     for (let r = 0; r < rows.length; r++) {
         const cols = rows[r].cells;
         const e = document.createElement('input');
@@ -179,10 +184,12 @@ function showSelections() {
         cols[0].insertAdjacentElement('afterbegin', e);
         if (courseList[getCourseId(e)]) {
             e.checked = true;
+            courseSelected = true;
         } else {
             e.disabled = shouldDisableCheckbox(e);
         }
     }
+    updateCurrentPageCheckboxes(courseSelected);
 }
 
 function showTimetable() {

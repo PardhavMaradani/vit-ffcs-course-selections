@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "VIT FFCS Course Selection",
+    "version": "1.0",
+    "description": "Create non-conflicting FFCS course selections from VTOP",
+    "permissions": ["contextMenus", "scripting", "activeTab"],
+    "background": {
+        "service_worker": "context-menu.js"
+    },
+    "commands": {
+        "gotoCourseAllocation": {
+            "suggested_key": {
+                "default": "Alt+G",
+                "mac": "Alt+G"
+            },
+            "description": "Go to Course Allocation page"
+        },
+        "showSelections": {
+            "suggested_key": {
+                "default": "Alt+S",
+                "mac": "Alt+S"
+            },
+            "description": "Show Selections"
+        },
+        "showTimetable": {
+            "suggested_key": {
+                "default": "Alt+T",
+                "mac": "Alt+T"
+            },
+            "description": "Show Timetable"
+        },
+        "clearTimetable": {
+            "suggested_key": {
+                "default": "Alt+R",
+                "mac": "Alt+R"
+            },
+            "description": "Clear Timetable"
+        }
+    }
+}

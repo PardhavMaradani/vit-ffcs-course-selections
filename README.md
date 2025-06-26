@@ -38,3 +38,8 @@ Right Click +
   - `> Clear Timetable`
   - `> Save Timetable`
 
+## Demo
+
+Here is a video that shows this extension in action:
+
+https://github.com/user-attachments/assets/9079f0b7-59ac-442f-9bad-6abedddb83ac
